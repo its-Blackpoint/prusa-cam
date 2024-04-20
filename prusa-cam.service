@@ -3,7 +3,7 @@ Description=Prusa Cam
 After=network-online.target
 
 [Service]
-ExecStart=/home/user/.local/bin/prusa-cam
+ExecStart=/home/pi/prusa-cam/prusa-cam
 Restart=always
 RestartSec=5
 
