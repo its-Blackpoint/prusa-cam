@@ -1,5 +1,8 @@
 # prusa-cam
 
+
+This is a Fork of Flacks Prusa-cam Webcam Daemon to work with Raspbian OS
+
 ![Snapshot of `prusa-cam`](snapshot.png)
 
 I set up a Logitech C920 webcam [inside my Prusa enclosure](https://www.printables.com/model/433908-logitech-c920-original-prusa-enclosure-mount) to be able to monitor my prints using Prusa Connect. `prusa-cam` is a Bash script that POSTs snapshots from your webcam to the Prusa Connect API in 10 second intervals, which I believe is the minimum time generally allowed by Prusa. It only sends snapshots when your printer is online and actively printing. It pings your printer locally and runs as a systemd service, and logs if things are successful or not, resetting states if failures occur.
@@ -17,7 +20,10 @@ I set up a Logitech C920 webcam [inside my Prusa enclosure](https://www.printabl
 
 ## Setup
 
-- Copy `prusa-cam` to somewhere like `"$HOME/.local/bin/"`
+New:
+- Git Clone Prusa-Cam to your home directory /home/pi/
+Old:
+- 
 - Copy the systemd service to `"$HOME/.config/systemd/user/"`
 - Edit the systemd service with the full path to the script
 - Copy `env.example` to `"$HOME/.config/prusa-cam/env"`
