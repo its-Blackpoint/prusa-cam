@@ -13,26 +13,23 @@ I set up a Logitech C920 webcam [inside my Prusa enclosure](https://www.printabl
 
 ## Dependencies
 
-- curl
 - jq
-- v4l2-ctl
 - ffmpeg
 
 ## Setup
 
-New:
-- Git Clone Prusa-Cam to your home directory /home/pi/
-Old:
-- 
-- Copy the systemd service to `"$HOME/.config/systemd/user/"`
-- Edit the systemd service with the full path to the script
-- Copy `env.example` to `"$HOME/.config/prusa-cam/env"`
-- Edit the file with your settings
-  - Get your printer API key from your printer (PrusaLink API key)
-  - Get your camera name from `v4l2-ctl --list-devices`
-  - Generate a fingerprint with something like `pwgen 32 1 | base64`
-  - Get your token from Prusa Connect > Camera > Other cameras
-- Run `prusa-cam`, ensure you're getting successes
+- Flash Raspbian OS 64Bit Lite on your SD Card eg using Raspberry Pi Imager
+- SSH into your Pi
+- install git: ```sudo apt-get install git```
+- install jq: ```sudo apt-get install jq```
+- install ffmpeg: ```sudo apt-get install ffmpeg```
+- Git Clone Prusa-Cam to your home directory (/home/pi/): ```git clone https://github.com/its-Blackpoint/prusa-cam.git```
+- Copy the service to /lib/systemd/system/ ```sudo cp /home/pi/prusa-cam/prusa-cam.service /lib/systemd/system```
+- Add "new other camera" in Prusa Connect
+- Edit `env.example` file to fit your Setup. Youll Find all info in the env.example File. ```sudo nano prusa-cam/env.example``` 
+- Rename `env.example` to `env.`  ```mv prusa-cam/env.example prusa-cam/env```
+- Run `prusa-cam`, ensure you're getting successes: ```./prusa-cam/prusa-cam```
   - Note: `prusa-cam` will only start POSTing snapshots if your printer is actively printing
   - `prusa-cam` will let you know if one of the critical dependencies is missing, or if your config is missing required fields
-- Run `systemctl --user enable --now prusa-cam`
+- Start prusa-cam Service: ```sudo systemctl start prusa-cam.service```
+- Check that prusa-cam Service is working: ```sudo systemctl status prusa-cam.service```
