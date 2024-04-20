@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-: "${CONFIG:=$HOME/.config/prusa-cam/env}"
+: "${CONFIG:=/home/pi/prusa-cam/env}"
 
 if ! [[ -f $CONFIG ]]; then
 	echo "$CONFIG doesn't exist, quitting"
